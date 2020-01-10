@@ -30,8 +30,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    public function boot()
+    {
+        
+        Schema::defaultStringLength(191);
+    }/*
     public function boot(){
         \Illuminate\Support\Facades\Schema::defaultStringLength(191);
-     }
+     }*/
      
 }
