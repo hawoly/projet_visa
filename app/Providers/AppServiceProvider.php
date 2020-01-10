@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Database\Schema\Builder;
 use App\User;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,12 +30,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+  public function boot(){
+   \Illuminate\Support\Facades\Schema::defaultStringLength(191);
+}
 
-
-    public function boot()
-    {
-        
-    Builder::defaultStringLength(191);
-
-    }
 }
