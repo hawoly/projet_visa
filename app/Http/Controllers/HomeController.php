@@ -34,11 +34,15 @@ class HomeController extends Controller
         $destination=\App\destination::pluck('nom_pays','id');
         $typelogement=\App\logement::pluck('typelogement','id');
        $rv= \App\rv::all();
- 
-      
-        $user = Auth::user()->roles;
+       //$rv= \App\rv::with('User:id,name')->get();
+       $users=\App\User::where('roles','admin')->get();
+      //dd($rv);
+       $ambassade=\App\ambassade::pluck('ambassade','id');
+      $user = Auth::user()->roles;
         if($user=='admin')
          return view('demande.list_demande', compact('rv'));
+        if($user=='supadmin')
+         return view('demande.supadmin', compact('users','ambassade'));
         if($user=='demandeur')
         return view('demandeur.demande', compact('destination','typelogement','demande','reponse','recour'));
     }

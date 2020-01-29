@@ -16,13 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
-    public function rvs(){
-        return $this->hasMany('App\rv');
-    }
+   
     
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -41,6 +38,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function ambassade(){
+        return $this->belongsTo('App\ambassade');
+    }
+     public function rvs(){
+        return $this->hasMany('App\rv','User_id','id');
+    }
 
 
     public function isAdmin(){

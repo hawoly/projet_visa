@@ -84,10 +84,9 @@ header.masthead1 {
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">liste demande</a></li>
-  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">liste Pays</a></li>
-  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">liste Logement</a></li>
+ 
   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">liste des RV</a></li>
-  <li role="presentation"><a href="#recour" aria-controls="recour" role="tab" data-toggle="tab">liste des recours</a></li>
+  
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
@@ -145,161 +144,14 @@ header.masthead1 {
     </div>
 </div>
   </div>
-  <div role="tabpanel" class="tab-pane" id="profile">
-  <div class="container">    
-     <br><br>
-     <div align="right">
-      <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">un aute pays</button>
-     </div>
-     <br />
-   
-    <table id="user_table" class="table table-bordered" width="100%">
-     <thead>
-      <tr>
-       <th width="50%">PAYS</th>
-       <th width="50%">Action</th>
-      </tr>
-     </thead></table></div>
-<div id="formModal" class="modal fade" role="dialog">
- <div class="modal-dialog">
-  <div class="modal-content">
-   <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ajouter un autre type</h4>
-        </div>
-        <div class="modal-body">
-         <span id="form_result"></span>
-         <form method="post" id="sample_form" class="form-horizontal">
-          @csrf
-          <div class="form-group">
-            <label class="control-label col-md-4" >Nom Pays: </label>
-            <div class="col-md-8">
-             <input type="text" name="nom_pays" id="nom_pays" class="form-control" />
-            </div>
-           </div>
-                <br />
-                <div class="form-group" align="center">
-                 <input type="hidden" name="action" id="action" value="Add" />
-                 <input type="hidden" name="hidden_id" id="hidden_id" />
-                 <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />
-                </div>
-         </form>
-        </div>
-     </div>
-    </div>
-</div>
-
-<div id="confirmModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">Confirmation</h2>
-            </div>
-            <div class="modal-body">
-                <h4 align="center" style="margin:0;">etes vous sur de supprimer?</h4>
-            </div>
-            <div class="modal-footer">
-             <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-  
-  
-  <br><br> <br><br>
-  </div>
-  <div role="tabpanel" class="tab-pane" id="messages">
-  <div class="container">    
-     <br />
  
-     <br />
-     <div align="right">
-      <button type="button" name="create_record1" id="create_record1" class="btn btn-success btn-sm">un autre type de logement</button>
-     </div>
-     <br />
-   <div class="table-responsive">
-    <table id="user_table1" class="table table-bordered table-striped" width="100%">
-     <thead>
-      <tr>
-       <th width="50%">typelogement</th>
-                
-                <th width="50%">Action</th>
-      </tr>
-     </thead>
-    </table>
-   </div>
-   <br />
-   <br />
-  </div>
-  
- 
-
-<div id="formModal1" class="modal fade" role="dialog">
- <div class="modal-dialog">
-  <div class="modal-content">
-   <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Ajouter un autre type</h4>
-        </div>
-        <div class="modal-body">
-         <span id="form_result1"></span>
-         <form method="post" id="sample_form1" class="form-horizontal">
-          @csrf
-          <div class="form-group">
-            <label class="control-label col-md-4" >Type Logement: </label>
-            <div class="col-md-8">
-             <input type="text" name="typelogement" id="typelogement" class="form-control" />
-            </div>
-           </div>
-         
-        
-                <br />
-                <div class="form-group" align="center">
-                 <input type="hidden" name="action1" id="action1" value="Add" />
-                 <input type="hidden" name="hidden_id1" id="hidden_id1" />
-                 <input type="submit" name="action_button1" id="action_button1" class="btn btn-warning" value="Add" />
-                </div>
-         </form>
-        </div>
-     </div>
-    </div>
-</div>
-
-<div id="confirmModal1" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2 class="modal-title">Confirmation</h2>
-            </div>
-            <div class="modal-body">
-                <h4 align="center" style="margin:0;">etes vous sur de supprimer?</h4>
-            </div>
-            <div class="modal-footer">
-             <button type="button" name="ok_button1" id="ok_button1" class="btn btn-danger">OK</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-  
-  
-  
-  </div>
   <div role="tabpanel" class="tab-pane" id="settings">
           <br>
   <table class="table">
   <thead>
     <tr>
-        <th  scope="col"><strong>id</strong></th>
-      <!--  <th  scope="col"><strong>NOM</strong></th>-->
+        
+       <th  scope="col"><strong>NOM</strong></th>
         <th  scope="col"><strong> DATE RV</strong></th>
         <th  scope="col"><strong>HEURE RV</strong></th>
         <th  scope="col"><strong>ACTION</strong></th>
@@ -308,12 +160,11 @@ header.masthead1 {
 </thead>
 <tbody>
 @foreach($rv as $r)
-        <tr>
-            <td>{{$r->User_id}}</td>
+     <tr>
+    
+           <td>{{$r->User->name??''}}</td>
             <td>{{$r->daterv}}</td>
             <td>{{$r->heurerv}}</td>
-           <!-- <td>{{$r->User->name??''}}</td>-->
-   
           <td><a href="{{route('confirm_rv',['id'=>$r->id])}}" class="btn btn-primary btn-sm">confirmer</a></td>
 
         </tr>
@@ -324,8 +175,7 @@ header.masthead1 {
 
   
   </div>
-  <div role="tabpanel" class="tab-pane" id="recour">setting</div>
-</div>
+  
 
 </div>
 <br><br><br><br><br>
@@ -467,228 +317,9 @@ demande_id = $(this).attr('id');
      alert('visa accepte');
    }});
  });
- //pays
+ 
 
 
- $(document).ready(function(){
-
-$('#user_table').DataTable({
- processing: true,
- serverSide: true,
- ajax: {
-  url: "{{ route('destination.index') }}",
- },
- columns: [
-  {
-   data: 'nom_pays',
-   name: 'nom_pays'
-  },
-  {
-   data: 'action',
-   name: 'action',
-   orderable: false
-  }
- ]
-});
-
-$('#create_record').click(function(){
- $('.modal-title').text('ajouter un pays');
- $('#action_button').val('Ajouter');
- $('#action').val('Add');
- $('#form_result').html('');
- $('#formModal').modal('show');
-});
-$('#sample_form').on('submit', function(event){
- event.preventDefault();
- var action_url = '';
- if($('#action').val() == 'Add')
- {
-  action_url = "{{ route('destination.store') }}";
- }
- if($('#action').val() == 'Edit')
- {
-  action_url = "{{ route('destination.update') }}";
- }
-
- $.ajax({
-  url: action_url,
-  method:"POST",
-  data:$(this).serialize(),
-  dataType:"json",
-  success:function(data)
-  {
-   var html = '';
-   if(data.errors)
-   {
-    html = '<div class="alert alert-danger">';
-    for(var count = 0; count < data.errors.length; count++)
-    {
-     html += '<p>' + data.errors[count] + '</p>';
-    }
-    html += '</div>';
-   }
-   if(data.success)
-   {
-    html = '<div class="alert alert-success">' + data.success + '</div>';
-    $('#sample_form')[0].reset();
-    $('#user_table').DataTable().ajax.reload();
-   }
-   $('#form_result').html(html);
-  }
- });
-});
-
-$(document).on('click', '.edit', function(){
- var id = $(this).attr('id');
- $('#form_result').html('');
- $.ajax({
-  url :"/destination/"+id+"/edit",
-  dataType:"json",
-  success:function(data)
-  {
-   $('#nom_pays').val(data.result.nom_pays);
-   $('#hidden_id').val(id);
-   $('.modal-title').text('Modifier pays');
-   $('#action_button').val('Edit');
-   $('#action').val('Edit');
-   $('#formModal').modal('show');
-  }
- })
-});
-
-var user_id;
-
-$(document).on('click', '.delete', function(){
- user_id = $(this).attr('id');
- $('#confirmModal').modal('show');
-});
-
-$('#ok_button').click(function(){
- $.ajax({
-  url:"destination/destroy/"+user_id,
-  success:function(data)
-  {
-   setTimeout(function(){
-    $('#confirmModal').modal('hide');
-    $('#user_table').DataTable().ajax.reload();
-   });
-  }
- })
-});
-
-});
-$(document).ready(function(){
-
-$('#user_table1').DataTable({
- processing: true,
- serverSide: true,
- ajax: {
-  url: "{{ route('logement.index') }}",
- },
- columns: [
-  {
-   data: 'typelogement',
-   name: 'typelogement'
-  },
-  {
-   data: 'action',
-   name: 'action',
-   orderable: false
-  }
- ]
-});
-
-$('#create_record1').click(function(){
- $('.modal-title').text('ajouter un type de logement');
- $('#action_button1').val('Ajouter');
- $('#action1').val('Add');
- $('#form_result1').html('');
-
- $('#formModal1').modal('show');
-});
-
-$('#sample_form1').on('submit', function(event){
- event.preventDefault();
- var action_url = '';
-
- if($('#action1').val() == 'Add')
- {
-  action_url = "{{ route('logement.store') }}";
- }
-
- if($('#action1').val() == 'Edit')
- {
-  action_url = "{{ route('logement.update') }}";
- }
-
- $.ajax({
-  url: action_url,
-  method:"POST",
-  data:$(this).serialize(),
-  dataType:"json",
-  success:function(data)
-  {
-   var html = '';
-   if(data.errors)
-   {
-    html = '<div class="alert alert-danger">';
-    for(var count = 0; count < data.errors.length; count++)
-    {
-     html += '<p>' + data.errors[count] + '</p>';
-    }
-    html += '</div>';
-   }
-   if(data.success)
-   {
-    html = '<div class="alert alert-success">' + data.success + '</div>';
-    $('#sample_form1')[0].reset();
-    $('#user_table1').DataTable().ajax.reload();
-   }
-   $('#form_result1').html(html);
-  }
- });
-});
-
-$(document).on('click', '.edit1', function(){
- var id = $(this).attr('id');
- $('#form_result1').html('');
- $.ajax({
-  url :"/logement/"+id+"/edit",
-  dataType:"json",
-  success:function(data)
-  {
-   $('#typelogement').val(data.result.typelogement);
-   $('#hidden_id1').val(id);
-   $('.modal-title').text('Modifier type logement');
-   $('#action_button1').val('Edit');
-   $('#action1').val('Edit');
-   $('#formModal1').modal('show');
-  }
- })
-});
-
-var user_id1;
-
-$(document).on('click', '.delete1', function(){
- user_id1 = $(this).attr('id');
- $('#confirmModal1').modal('show');
-});
-
-$('#ok_button1').click(function(){
- $.ajax({
-  url:"logement/destroy/"+user_id1,
-  success:function(data)
-  {
-   setTimeout(function(){
-    $('#confirmModal1').modal('hide');
-    $('#user_table1').DataTable().ajax.reload();
-   
-   });
-  }
- })
-});
-
-});
    </script>
     
   

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAmbassadesTable extends Migration
+class CreateLogementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAmbassadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ambassades', function (Blueprint $table) {
+        Schema::create('logements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ambassade');
+            $table->string('typelogement');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateAmbassadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ambassades');
+        Schema::dropIfExists('logements');
     }
 }

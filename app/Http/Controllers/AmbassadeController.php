@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use \App\ambassade;
 use Illuminate\Http\Request;
-
+use DataTables;
+use Validator;
 class AmbassadeController extends Controller
 {
     /**
@@ -11,9 +12,21 @@ class AmbassadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->ajax())
+        {
+            $data = ambassade::latest()->get();
+            return DataTables::of($data)
+                    ->addColumn('action', function($data){
+                        $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit2 btn btn-primary btn-sm">Modifier</button>';
+                        $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete2 btn btn-danger btn-sm">Supprimer</button>';
+                        return $button;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+        return view('demande.supadmin');
     }
 
     /**
@@ -34,7 +47,25 @@ class AmbassadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
+        $rules = array(
+            'ambassade'    =>  'required|unique:ambassades|max:255'
+        );
+        
+        $error = Validator::make($request->all(), $rules);
+
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $form_data = array(
+            'ambassade'        =>  $request->ambassade
+        );
+   
+         ambassade::firstOrCreate($form_data);
+         return response()->json(['success' => 'Data Added successfully.']);
     }
 
     /**
@@ -56,7 +87,11 @@ class AmbassadeController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(request()->ajax())
+        {
+            $data = ambassade::findOrFail($id);
+            return response()->json(['result' => $data]);
+        }
     }
 
     /**
@@ -66,9 +101,26 @@ class AmbassadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ambassade $ambassade)
     {
-        //
+        $rules = array(
+            'ambassade'        =>  'required'
+        );
+
+        $error = Validator::make($request->all(), $rules);
+
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $form_data = array(
+            'ambassade'    =>  $request->ambassade
+        );
+
+        ambassade::whereId($request->hidden_id3)->update($form_data);
+
+        return response()->json(['success' => 'Data is successfully updated']);
     }
 
     /**
@@ -79,6 +131,7 @@ class AmbassadeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = ambassade::findOrFail($id);
+        $data->delete();
     }
 }

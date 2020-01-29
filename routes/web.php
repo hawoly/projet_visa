@@ -1,11 +1,7 @@
 <?php
-
-
 Route::get('/',"AccueilController@index");
-
 Route::get('/country',"AccueilController@show");
 Route::get('/contact',"AccueilController@contact");
-
 ////produit
 Route::get('/produit',"ProduitController@index");
 Route::get('/produit/create',"ProduitController@create");
@@ -13,7 +9,6 @@ Route::post('/produit/traitement',"ProduitController@store");
 //categorie
 Route::get('/index',"CategoriesController@index1");
 Route::get('categorie/essai',"CategoriesController@essai")->name('essai');
-
 Route::get('categorie/essayer',"CategoriesController@essayer")->name('essayer');
 Route::get('/categorie/form',"CategoriesController@create")->name('create_categorie');
 Route::post('/categorie/traitement',"CategoriesController@store");
@@ -21,12 +16,23 @@ Route::resource('categorie',"CategoriesController")->middleware('auth');
 Route::get("/categorie/edit/{id}", "CategoriesController@edit")->name('editer_categorie');
 Route::patch("/categorie/edit/{id}", "CategoriesController@update")->name('update_categorie');
 //typelogement
-
-
 Route::resource('logement', 'LogementController');
 Route::post('logement/update', 'LogementController@update')->name('logement.update');
 Route::get('logement/destroy/{id}', 'LogementController@destroy');
 Route::get('logements', 'LogementController@index');
+//ambassade
+Route::resource('ambassade', 'AmbassadeController');
+Route::post('ambassade/update', 'AmbassadeController@update')->name('ambassade.update');
+Route::get('ambassade/destroy/{id}', 'AmbassadeController@destroy');
+Route::get('ambassades', 'AmbassadeController@index');
+//supadmin
+Route::resource('supadmin', 'AdminsController');
+Route::post('supadmins/update', 'AdminsController@update')->name('supadmin.update');
+Route::get('supadmins/destroy/{id}', 'AdminsController@destroy');
+Route::post('/admin/traitement', 'AdminsController@store');
+
+
+
 
 Route::get('/essai',function(){
  return view('essai');

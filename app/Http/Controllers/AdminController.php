@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use \App\demande;
 use \App\reponse;
 use \App\User;
+use \App\ambassade;
 use Auth;
 use Illuminate\Http\Request;
 use Redirect,Response,DB,Config;

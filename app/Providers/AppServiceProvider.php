@@ -34,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
    \Illuminate\Support\Facades\Schema::defaultStringLength(191);
    if(config('app.env')==='production'){
        \URL::forceScheme('https');
+       
    }
 }
 

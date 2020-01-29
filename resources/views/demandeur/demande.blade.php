@@ -59,7 +59,7 @@ enctype="multipart/form-data">
 <input type="text"  name="lieu_residence" class="form-control mb-4" placeholder="LIEU DE RESIDENCE">
 
 <select name="typelogement_id" id="typelogement_id" class="form-control mb-4" >
-<option vvalue="" hidden>choisir le type de logement</option>
+<option value="" hidden>choisir le type de logement</option>
 @foreach($typelogement as $key => $value)
     <option value="{{$key}}">{{$value}}</option>
 @endforeach
