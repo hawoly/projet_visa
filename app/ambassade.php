@@ -10,4 +10,7 @@ class ambassade extends Model
     public function Users(){
         return $this->hasMany('App\User');
     }
+    public function destinations(){
+        return $this->hasMany('App\destination');
+    }
 }

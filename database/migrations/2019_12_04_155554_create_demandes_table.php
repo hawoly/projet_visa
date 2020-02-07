@@ -32,7 +32,7 @@ class CreateDemandesTable extends Migration
             $table->unsignedInteger('destination_id')->nullable(true);
             $table->unsignedInteger('logement_id')->nullable(true);
             $table->string('reponse')->nullable(true);
-            
+            $table->string('Nambassade')->nullable(true);
 
             $table->timestamps();
         });

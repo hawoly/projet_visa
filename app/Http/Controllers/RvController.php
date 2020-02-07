@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use \Auth;
 use  App\rv;
+use Mail;
 
 class RvController extends Controller
 {
@@ -55,10 +56,24 @@ class RvController extends Controller
          rv::create($form_data);
          return redirect()->back()->with('messag', 'rv ajoute.');    
     }
-    public function confirm(){
-        
-    }
+    public function confirm($id){
+        $data = rv::findOrFail($id);
+       // dd($data);
+      //dd($data->User->email);
+      $name=$data->User->name;
+      $email=$data->User->email;
+      $date=$data->daterv;
+      $heure=$data->heurerv;
+      $data=array("name"=> $name,"date"=>$date,"heure"=>$heure
+      ,"body"=>" votre rv a ete revenu");
+      Mail::send('mail',$data,function($message) use($name,$email){
+          $message->to($email)
+          ->subject('lessai subject');
+    // Mail::to($data->User->email)->send(new AbonnementMail($data));
+    });
+    return ('Thanks for contacting us!');
 
+}
     /**
      * Display the specified resource.
      *

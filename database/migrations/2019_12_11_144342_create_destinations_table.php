@@ -16,6 +16,7 @@ class CreateDestinationsTable extends Migration
         Schema::create('destinations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom_pays');
+            $table->unsignedInteger('ambassade_id')->nullable(true);
             $table->timestamps();
         });
     }

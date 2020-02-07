@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class AbonnementMail extends Mailable
+class ContactSendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +18,9 @@ class AbonnementMail extends Mailable
      */
     public function __construct($data)
     {
+       // dd($data);
         $this->data = $data;
+        
     }
 
     /**
@@ -28,10 +30,12 @@ class AbonnementMail extends Mailable
      */
     public function build()
     {
-       // return $this->view('view.name');
-       return $this->from()
-       ->subject('New Customer Equiry')
-       ->view('dynamic_email_template')
-       ->with('data', $this->data);
+       $dat=$this->data;
+      // dd($dat['email']);
+        return $this->from($dat['email'],$dat['name'])
+        ->ReplyTo($dat['email'],$dat['name'])
+        ->subject('New Customer Equiry')
+        ->view('contactemail')
+        ->with('data', $this->data);
     }
 }

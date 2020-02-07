@@ -70,3 +70,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('demandeur', 'DemandeurController@index');
 Route::get("/rv/confirm/{id}", "RvController@confirm")->name('confirm_rv');
+Route::post('/sendemail/send', 'ContactEmailController@send');

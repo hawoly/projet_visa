@@ -10,4 +10,7 @@ class destination extends Model
     public function demandes(){
         return $this->hasMany('App\demande');
     }
+    public function ambassade(){
+        return $this->belongsTo('App\ambassade');
+    }
 }

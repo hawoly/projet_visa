@@ -301,6 +301,12 @@ header.masthead1 {
              <input type="text" name="nom_pays" id="nom_pays" class="form-control" />
             </div>
            </div>
+           <select name="ambassade_id" id="ambassade_id" class="form-control mb-4" >
+      <option value="" hidden >choisir l'ambassade</option>
+     @foreach($ambassade as $key => $value)
+      <option value="{{$key}}">{{$value}}</option>
+     @endforeach
+        </select>
                 <br />
                 <div class="form-group" align="center">
                  <input type="hidden" name="action" id="action" value="Add" />

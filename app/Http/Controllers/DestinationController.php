@@ -48,7 +48,8 @@ class DestinationController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'nom_pays'    =>  'required|unique:destinations'
+            'nom_pays'    =>  'required|unique:destinations',
+            'ambassade_id'  =>    'required'
         );
         $error = Validator::make($request->all(), $rules);
         if($error->fails())
@@ -56,7 +57,8 @@ class DestinationController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
         $form_data = array(
-            'nom_pays'        =>  $request->nom_pays
+            'nom_pays'        =>  $request->nom_pays,
+            'ambassade_id'   =>   $request->ambassade_id
         );
         destination::create($form_data);
         return response()->json(['success' => 'Data Added successfully.']);

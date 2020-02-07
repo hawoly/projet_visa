@@ -220,7 +220,7 @@ header.masthead1 {
                      { data: 'adresse', name: 'adresse' },
                      { data: 'tel', name: 'tel' },      
                      { data: 'motif_demande', name: 'motif_demande' },
-                     {"visible": false , data: 'nom_pays', name: 'destination_id', searchable: false },
+                     { data: 'nom_pays', name: 'destination_id'},
                      { "visible": false ,data: 'typelogement', name: 'logement_id', searchable: false },                 
                      { "visible": false , data: 'date_prevu_depart', name: 'date_prevu_depart' },
                      { "visible": false , data: 'lieu_residence', name: 'lieu_residence' },

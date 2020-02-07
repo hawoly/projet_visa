@@ -109,6 +109,7 @@ if($request->has('releve_banvaire')){
     $this->uploadImage($image3, $folder, 'public', $image_name3);
 }
         $demande->demandeur_id=Auth::user()->id;
+        //$demande->Nambassade=Auth::user()->ambassade_id;
         $demande->prenom=$request->input('prenom');
         $demande->date_naissance=$request->input('date_naissance');
         $demande->lieu_naissance=$request->input('lieu_naissance');

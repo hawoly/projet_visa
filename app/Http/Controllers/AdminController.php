@@ -4,26 +4,31 @@ use \App\demande;
 use \App\reponse;
 use \App\User;
 use \App\ambassade;
-use Auth;
+
 use Illuminate\Http\Request;
 use Redirect,Response,DB,Config;
 use DataTables;
 use Validator;
+use Auth;
 class AdminController extends Controller
 {
     public function index()
     {
+       
         return view('demande.list_demande');     
     }
     public function List()
     {
+    
         $demande = DB::table('demandes')
-        ->join('users', 'users.id', '=', 'demandes.demandeur_id')
+        ->join('users', 'users.id', '=', 'demandes.demandeur_id' )
         ->join('logements', 'logements.id', '=', 'demandes.logement_id')
         ->join('destinations', 'destinations.id', '=', 'demandes.destination_id')
         ->select('demandes.id','demandeur_id','users.name','prenom','date_naissance','lieu_naissance','adresse',
         'tel','motif_demande','destination_id','destinations.nom_pays','logement_id','logements.typelogement','date_prevu_depart','lieu_residence','duree_sejour','photo_personnel',
-        'photo_passport','releve_banvaire')->where('status', 0);
+        'photo_passport','releve_banvaire')
+        ->where('status', '=', 0)
+        ->where('destination_id','=',Auth()->user()->ambassade_id);
         return datatables()->of($demande)  
         ->addColumn('action', function($demande){
             $button = '<button type="button" name="accept" id="'.$demande->id.'" class="accept btn btn-primary btn-sm">Accepter</button>';
