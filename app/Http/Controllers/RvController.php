@@ -48,6 +48,15 @@ class RvController extends Controller
         {
             return response()->json(['errors' => $error->errors()->all()]);
         }
+        $demande= \App\demande::where('demandeur_id', Auth::user()->id)->get();
+        foreach ($demande as $key => $demand) {
+            $form_data = array(
+                'daterv' =>  $request->daterv,
+                'heurerv' =>  $request->heurerv,
+                'User_id' => $demand->id,         
+            );
+        }
+        
         $form_data = array(
             'daterv' =>  $request->daterv,
             'heurerv' =>  $request->heurerv,
@@ -57,21 +66,21 @@ class RvController extends Controller
          return redirect()->back()->with('messag', 'rv ajoute.');    
     }
     public function confirm($id){
-        $data = rv::findOrFail($id);
-       // dd($data);
-      //dd($data->User->email);
-      $name=$data->User->name;
-      $email=$data->User->email;
-      $date=$data->daterv;
-      $heure=$data->heurerv;
+        $dat = rv::findOrFail($id);
+      $name=$dat->User->name;
+      $email=$dat->User->email;
+      $date=$dat->daterv;
+      $heure=$dat->heurerv;
       $data=array("name"=> $name,"date"=>$date,"heure"=>$heure
       ,"body"=>" votre rv a ete revenu");
       Mail::send('mail',$data,function($message) use($name,$email){
           $message->to($email)
           ->subject('lessai subject');
-    // Mail::to($data->User->email)->send(new AbonnementMail($data));
     });
-    return ('Thanks for contacting us!');
+  //  dd($dat);
+    $dat->status=1;
+    $dat->update();
+    return redirect()->route('home');  
 
 }
     /**

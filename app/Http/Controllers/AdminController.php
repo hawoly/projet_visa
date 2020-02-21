@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use \App\demande;
 use \App\reponse;
 use \App\User;
+use \App\recour;
 use \App\ambassade;
 
 use Illuminate\Http\Request;
@@ -72,20 +73,39 @@ class AdminController extends Controller
         $data->demande_id=$id;
         $data->update();    
     }
-  /*public function rejett($id){
-    $da = reponse ::orderBy('id', 'desc')->first()->id;
-    $d=$da;
-    $data = reponse::findOrFail($d);
+  public function rejett($id,$dd){
+    $data = demande::findOrFail($id);
+   $d=$data->demandeur_id;
+    $data->status=1;
+    $data->reponse=$id;
+    $data->update();      
+    $data = reponse::findOrFail($dd);
     $data->demande_id=$id;
     $data->update();
- 
-    
-  }*/
+    $sada=recour::findOrFail($dd);
+    $sada->status=1;//refus
+    $sada->update();
+    return redirect()->route('home');   
+
+  }
     public function accept($id){
         $data = demande::findOrFail($id);
         $data->status=2;
         $data->reponse=$id;
         $data->update();
+   
+    }
+    public function acceptt($id,$dd){
+        $data = demande::findOrFail($id);
+        $data->status=2;
+        $data->reponse=$id;
+        $data->update();
+        $data = reponse::findOrFail($dd);
+        $data->delete();
+        $sada=recour::findOrFail($dd);
+        $sada->status=2;//aceppp
+        $sada->update();
+        return redirect()->route('home');   
     }
    
 

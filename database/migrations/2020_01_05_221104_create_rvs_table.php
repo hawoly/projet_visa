@@ -18,6 +18,7 @@ class CreateRvsTable extends Migration
             $table->date('daterv');
             $table->time('heurerv');
             $table->unsignedInteger('User_id')->nullable(true)->unique();
+            $table->unsignedInteger('status')->default(0);
             $table->timestamps();
         });
     }

@@ -84,9 +84,8 @@ header.masthead1 {
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">liste demande</a></li>
- 
   <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">liste des RV</a></li>
-  
+  <li role="presentation"><a href="#setting" aria-controls="setting" role="tab" data-toggle="tab">liste des recours</a></li>
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
@@ -144,39 +143,51 @@ header.masthead1 {
     </div>
 </div>
   </div>
- 
-  <div role="tabpanel" class="tab-pane" id="settings">
-          <br>
+  <!-- -->
+  <div role="tabpanel" class="tab-pane" id="settings">  <br>
   <table class="table">
   <thead>
-    <tr>
-        
-       <th  scope="col"><strong>NOM</strong></th>
+    <tr><th  scope="col"><strong>NOM</strong></th>
         <th  scope="col"><strong> DATE RV</strong></th>
         <th  scope="col"><strong>HEURE RV</strong></th>
-        <th  scope="col"><strong>ACTION</strong></th>
-
-    </tr>
+        <th  scope="col"><strong>ACTION</strong></th></tr>
 </thead>
 <tbody>
-@foreach($rv as $r)
-     <tr>
-    
-           <td>{{$r->User->name??''}}</td>
+@if(!empty($rv))
+@foreach ($rv as $r)
+<tr> <td>{{$r->User->name??''}}</td>
             <td>{{$r->daterv}}</td>
             <td>{{$r->heurerv}}</td>
-          <td><a href="{{route('confirm_rv',['id'=>$r->id])}}" class="btn btn-primary btn-sm">confirmer</a></td>
-
-        </tr>
-        @endforeach
-      
+          <td><a href="{{route('confirm_rv',['id'=>$r->id])}}" class="btn btn-primary btn-sm">confirmer</a></td> </tr>
+ @endforeach
+ @endif    
         </tbody>
-</table> <br><br><br><br><br><br>
-
-  
+</table> <br><br><br><br><br><br> 
   </div>
-  
-
+  <div role="tabpanel" class="tab-pane" id="setting">  <br>
+  <table class="table">
+  <thead>
+    <tr><th  scope="col"><strong>NOM</strong></th>
+        <th  scope="col"><strong> DESCRIPTION</strong></th>
+        <th  scope="col"><strong>PHOTO PERSONNEL</strong></th>
+        <th  scope="col"><strong>ACTION</strong></th></tr>
+</thead>
+<tbody>
+@if(!empty($recou))
+@foreach($recou as $r)
+     <tr> <td>{{$r->User->name??''}}</td>
+            <td>{{$r->description}}</td>
+            <td><img src="{{$r->photo_personnel ? asset($r->photo_personnel) : asset('uploads/personnel/default.png')}}" 
+           alt="{{$r->name}}" width="50"></td>
+           <td><a href="{{route('recour',['id'=>$r->User_id])}}" class="btn btn-primary btn-sm">voir</a></td> </tr>
+ @endforeach
+ @endif    
+        </tbody>
+</table> <br><br><br><br><br><br> 
+  </div>
+                 
+ 
+     
 </div>
 <br><br><br><br><br>
 
@@ -317,7 +328,7 @@ demande_id = $(this).attr('id');
      alert('visa accepte');
    }});
  });
- 
+
 
 
    </script>

@@ -6,6 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Auth;
 use App\recour;
+use App\demande;
+use App\reponse;
 class RecourController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class RecourController extends Controller
      */
     public function index()
     {
-        //
+        
     }
     public function creneau(){
         return view('creneau');
@@ -75,12 +77,22 @@ if($request->has('releve_banvaire')){
    $recour->releve_banvaire = $folder.$image_name3.'.'.$image3->getClientOriginalExtension();
    $this->uploadImage($image3, $folder, 'public', $image_name3);
 }
-       $recour->reponse_id=Auth::user()->id;
+       $recour->User_id=Auth::user()->id;
        $recour->description=$request->input('description');   
       
     
       $recour->save(); 
         return redirect()->back()->with('messages', 'Data Added successfully');
+    }
+    public function voir($id){
+       $data = demande::where('demandeur_id',$id)->get();
+       foreach ($data as $key => $da) {
+       $reponse=reponse::where('demande_id',$da->id)->get();
+       $recour=recour::where('User_id',$da->demandeur_id)->get();
+     // dd($recour);
+       }
+        return view("demande.list",compact('data','reponse','recour'));
+
     }
 
     /**

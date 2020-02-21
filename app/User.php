@@ -44,6 +44,9 @@ class User extends Authenticatable
      public function rvs(){
         return $this->hasMany('App\rv','User_id','id');
     }
+    public function demandes(){
+        return $this->hasMany('App\demande','demandeur_id','id');
+    }
 
 
     public function isAdmin(){

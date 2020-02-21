@@ -9,8 +9,8 @@ class demande extends Model
 {
     protected $guarded=['status'];
 
-    public function demandeur(){
-        return $this->belongsTo('App\demandeur');
+    public function User(){
+        return $this->belongsTo('App\User','demandeur_id');
     }
     public function destination(){
         return $this->belongsTo('App\destination');

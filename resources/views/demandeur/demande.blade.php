@@ -125,8 +125,14 @@ enctype="multipart/form-data">
 @foreach($demande as $demand)
         <tr>
         @forelse ($recour as $rec)
+        @if($rec->status==0)
         <td scope="col"><strong>REPONSE</strong></td>
         <td>  <h2  class="text-info">en attente</h2> </td>
+        @endif
+        @if($rec->status==2)
+        <td scope="col"><strong>REPONSE</strong></td>
+        <td> <h2 class="text-success">accepte</h2> </td>
+        @endif
        @empty
 
         <td scope="col"><strong>REPONSE</strong></td>

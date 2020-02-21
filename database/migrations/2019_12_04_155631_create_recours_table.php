@@ -19,7 +19,8 @@ class CreateRecoursTable extends Migration
             $table->string('photo_personnel');
             $table->string('photo_passport');
             $table->string('releve_banvaire');
-            $table->unsignedInteger('reponse_id')->nullable(true)->unique();
+            $table->unsignedInteger('User_id')->nullable(true)->unique();
+            $table->unsignedInteger('status')->default(0);
             $table->timestamps();
         });
     }

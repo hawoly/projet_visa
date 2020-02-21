@@ -62,7 +62,8 @@ Route::post('/rv/traitement',"RvController@store");
 Route::get('demande-list', 'AdminController@List'); 
 Route::get('demande/rejet/{id}', 'AdminController@rejet');
 
-Route::get('demande/rejett/{id}', 'AdminController@rejett');
+Route::get('demande/rejett/{id}/{dd}', 'AdminController@rejett')->name('rejet');
+Route::get('demande/acceptt/{id}/{dd}', 'AdminController@acceptt')->name('accept');
 Route::get('demande/accept/{id}', 'AdminController@accept');
 //Route::get('essai',"DemandeController@essai");
 Auth::routes();
@@ -70,4 +71,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('demandeur', 'DemandeurController@index');
 Route::get("/rv/confirm/{id}", "RvController@confirm")->name('confirm_rv');
+Route::get("/recour/{id}", "RecourController@voir")->name('recour');
+Route::get("/recour", "RecourController@list");
 Route::post('/sendemail/send', 'ContactEmailController@send');
